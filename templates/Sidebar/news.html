@@ -1,0 +1,10 @@
+{% for item in news["articles"] %}
+<div class="news-item">
+    <div class="news-item-title">{{ item["title" ]}}</div>
+    <p class="news-item-text">{{ item["content"] }}
+    </p>
+    <p class="news-item-link">
+        <a href="{{item['url']}}" target="_blank">More ...</a>
+    </p>
+</div>
+{% endfor %}

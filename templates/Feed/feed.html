@@ -1,0 +1,66 @@
+{% for post in feed %}
+<div class="card profile-card updates shadow">
+    <div class="card-body">
+        <div class="container text-left">
+            <div class="row">
+                <div class="col-2">
+                    <img src="/static/public/{{ post.picture }}" class="post-img" />
+                </div>
+                <div class="col-10 post-name">
+                    <strong><a href="/profile?id={{post.author}}">{{ post.username }}</a></strong>
+                    <p class="timestamp">{{ post.timestamp | datetimeformat}}</p>
+                </div>
+                {% if post.author == session["user_id"] %}
+                <form method="post" action="/deletepost">
+                    <input type="hidden" name="postid" value="{{ post.postid }}" />
+                    <div class="delete">
+                        <button class="btn btn-delete" type="submit">x</button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+
+            <p>{{ post.text }}</p>
+            <hr />
+            {% for item in comments %}
+            {% if item.postid == post.postid %}
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-1">
+                    <img src="/static/public/{{ item.picture }}" class="comment-img" />
+                </div>
+                <div class="col-10">
+                    <strong>
+                        <a href="/profile?id={{ item.commid }}">
+                            {{ item.username }}</a></strong>
+                    <p class="timestamp">{{ item.timestamp | datetimeformat }}</p>
+                </div>
+                {% if item.commid == session["user_id"] %}
+                <div class="delete">
+                    <form method="post" action="/deletecomment">
+                        <input type="hidden" name="from" value="feed" />
+                        <input type="hidden" name="commentid" value="{{ item.commentid }}" />
+                        <button class="btn-delete-comment" type="submit">x</button>
+                    </form>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="row comment-text">
+                <div class="col-2"></div>
+                <div class="col-10">
+                    {{ item.commenttext }}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <form method="post" action="/comment">
+                <input type="hidden" name="postid" value="{{ post.postid }}" />
+                <input type="hidden" name="from" value="feed" />
+                <input type="text" name="comment" class="form-control" placeholder="Write a comment ..."
+                    autocomplete="off" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}

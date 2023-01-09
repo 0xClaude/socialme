@@ -1,0 +1,29 @@
+<div class="col-4">
+    <div class="card profile-card update-card">
+        <div class="card-header update-header">
+            What's on your mind, {{ user[0]["username"] }}?
+        </div>
+        <div class="card-body">
+            <form method="post" action="/profile">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="/static/public/{{ user[0]['picture']}}" class="update-img" />
+                    </div>
+                    <div class="col-10">
+                        <input type="hidden" name="from" value="feed" />
+                        <input type="hidden" name="input" value="post">
+                        <input type="text" name="text" class="form-control post-update"
+                            placeholder="Write something ..." autocomplete="off">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row updates-divider">
+        <div class="col-2">
+            <h6>Updates:</h6>
+        </div>
+        <div class="col-10">
+            <hr />
+        </div>
+    </div>

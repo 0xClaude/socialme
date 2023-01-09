@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block head %}
+Register
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                Register
+            </div>
+            <div class="card-body">
+                <form method="post" action="/register" id="form">
+                    <div class="mb-2">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                            required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <p id="mailcheck"></p>
+                    <div class="mb-2">
+                        <label for="Username" class="form-label">Username</label>
+                        <div class=" input-group">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1" id="Username" name="Username" autocomplete="off">
+
+                        </div>
+                        <p id="checkuser"></p>
+                    </div>
+                    <div class="mb-2">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="repeat" class="form-label">Repeat Password</label>
+                        <input type="password" class="form-control" name="confirmation" id="repeat" required>
+                    </div>
+                    <p id="pwdcheck"></p>
+                    <button type="submit" class="btn btn-success" name="register">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+
+
+<script src="/static/checkuser.js" type="application/javascript"></script>
+{% endblock %}

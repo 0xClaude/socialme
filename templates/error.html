@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block head %}
+Error
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        {% if error == "warning" %}
+        <div class="warning">
+            <div class='alert alert-warning' role='alert'>{{ errormessage }}</div>
+            <a href="/register">Try again</a>
+        </div>
+        {% elif error == "danger" %}
+        <div class="danger">
+            <div class='alert alert-danger' role='alert'>{{ errormessage }}</div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-4"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<div class="card shadow">
+    <div class="card-header">
+        <h6>News, powered by <a href="https://newsapi.org/" href="_blank">NewsAPI</a></h6>
+    </div>
+    <div class="card-body news-container">
+        {% with news=news %}
+        {% include "Sidebar/news.html" %}
+        {% endwith %}
+
+    </div>
+</div>

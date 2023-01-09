@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block head %}
+Home
+{% endblock %}
+
+{% block body %}
+
+{% if not session["user_id"] %}
+{# if not logged in, show login field #}
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        {% include "Start/login_field.html" %}
+    </div>
+    <div class="col-4"></div>
+</div>
+
+{% else %}
+{# if logged in, show the home feed #}
+<div class="text-center">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3">
+            {# include the left sidebar #}
+            {% with user=user %}
+                {% include "Sidebar/sidebar_profile.html" %}
+            {% endwith %}
+        </div>
+        {# include the component to update your status #}
+        {% with user=user %}
+            {% include "Feed/update_header.html" %}
+        {% endwith %}
+
+        {# Load the feed #}
+        {% with feed=feed, comments=comments %}
+        {% include "Feed/feed.html" %}
+        {% endwith %}
+
+    </div>
+    <div class=" col-3">
+        {# include the right sidebar #}
+        {% include "Sidebar/sidebar.html" %}
+    </div>
+    <div class="col-1"></div>
+</div>
+
+{% endif %}
+
+{% endblock %}

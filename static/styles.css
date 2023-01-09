@@ -1,0 +1,303 @@
+/*
+ * Default settings
+ */
+
+body {
+    background-color: #FEFEFE;
+}
+
+main {
+    width: 100%;
+    min-height: 75vh;
+    padding: 2rem;
+}
+
+footer {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+a,
+a:visited,
+a:active,
+a:focus {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.relative {
+    position: relative;
+}
+
+/*
+ * Top navigation bar
+ */
+
+.navbar-brand:hover {
+    text-decoration: none;
+}
+
+.navbar-blur {
+    backdrop-filter: blur(10px);
+
+}
+
+.searchbar {
+    width: 100%;
+    margin: 0 0.5rem 0 0;
+}
+
+.searchbar input {
+    width: 100%;
+    margin: 0 1rem 0 -60%;
+}
+
+.shadow {
+    box-shadow: 0 10px 15px -10px;
+}
+
+/*
+ * The warning page
+ */
+
+.warning {
+    width: 100%;
+    text-align: center;
+}
+
+/* Left sidebar */
+
+.sidebar-profile-name {
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.sidebar {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar-profilepic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.sidebar-profile {
+    height: 200px;
+    position: relative;
+    padding: 15% 5%;
+}
+
+/*
+ * Main feed
+ */
+
+
+/*
+ * Update-field
+ */
+.post-name {
+    padding-left: 0;
+}
+
+.update-update {
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+
+.update-inside {
+    padding: 0.5%;
+}
+
+.update-img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+
+/*
+ * The main feed
+ */
+
+.post-img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.delete {
+    position: absolute;
+    left: 85%;
+    width: 1.5rem;
+    text-align: left;
+}
+
+.delete-profile {
+    position: absolute;
+    top: 10%;
+    left: 85%;
+    width: 1.5rem;
+    text-align: left;
+}
+
+.btn-delete {
+    background: none;
+    border-radius: 5px;
+}
+
+.btn-delete-comment {
+    background: none;
+    border: none;
+}
+
+.card-header {
+    text-align: left;
+}
+
+.update-card {
+    border: 0;
+    box-shadow: 0px 10px 15px -10px;
+}
+
+.update-header {
+    border-radius: 50% 50% 0 0;
+}
+
+.update-btn {
+    margin: 1rem 0 0;
+    width: 100%;
+}
+
+.updates-divider {
+    margin: 0;
+    padding: 0;
+}
+
+.updates {
+    text-align: left;
+}
+
+.profile {
+    width: 30%;
+}
+
+.profile-card {
+    margin: 1rem 0;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.comment-img {
+    border-radius: 50%;
+    with: 25px;
+    height: 25px;
+}
+
+.comment-text {
+    margin: 0 0 1rem 0;
+}
+
+.profile-item {
+    padding: 0.5rem 0;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    width: 100%;
+}
+
+/*
+ * The right sidebar
+ */
+
+.news,
+.weather {
+    margin: 1rem 0 1.5rem 0;
+}
+
+.news-heading,
+.weather-heading {
+    width: 100%;
+    text-align: left;
+    margin: 0 0 1rem 1rem;
+}
+
+.news-container {
+    position: relative;
+    margin: 1rem;
+    padding-right: 1rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.weather-container {
+    position: relative;
+    margin: 1rem;
+    padding-right: 1rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.news-item {
+    position: relative;
+    margin: 0 0 0 1rem;
+    text-align: left;
+}
+
+.news-item-title {
+    padding: 0.5rem;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    background: rgba(247, 247, 247, 1);
+    border-bottom: 1px solid gray;
+}
+
+.news-item-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.news-item-link {
+    font: 0.9rem;
+    margin: 0 0 1rem 0;
+}
+
+.weather-heading {
+    font-weight: bold;
+}
+
+
+/*
+ * Settings page
+ */
+
+.settings {
+    margin: 1rem 0;
+}
+
+.required {
+    color: red;
+}

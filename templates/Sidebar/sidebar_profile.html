@@ -1,0 +1,26 @@
+<div class="card shadow sidebar profile-card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4">
+                <img class="sidebar-profilepic" src="/static/public/{{ user[0]['picture'] }}" />
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12 sidebar-profile-name">
+                        <strong>Welcome, {{ user[0]["username"] }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card shadow">
+    <div class="card-header">
+        <h6>Current weather, powered by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a></h6>
+    </div>
+    <div class="card-body">
+        {% with weather=weather %}
+        {% include "Sidebar/weather.html" %}
+        {% endwith %}
+    </div>
+</div>

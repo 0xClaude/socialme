@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block head %}
+Settings
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+        <div class="card profile-card">
+            <div class="card-header">
+                Settings
+            </div>
+            <form method="post" action="/settings" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row settings">
+                        <div class="col-5">Username: <span class="required">*</span></div>
+                        <div class="col-7">
+                            <input type="text" value="{{ user[0].username }}" name="username" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row settings">
+                        <div class="col-5">E-Mail:</div>
+                        <div class="col-7">
+                            <input type="text" value="{{ user[0].email }}" class="form-control" readonly disabled />
+                        </div>
+                    </div>
+                    <div class="row settings">
+                        <div class="col-5">New Password:</div>
+                        <div class="col-7">
+                            <input type="password" class="form-control" name="password" />
+                        </div>
+                    </div>
+                    <div class="row settings">
+                        <div class="col-5">Repeat Password:</div>
+                        <div class="col-7">
+                            <input type="password" class="form-control" name="repeat" />
+                        </div>
+                    </div>
+                    <div class="row settings">
+                        <div class="col-5">Profile picture:</div>
+                        <div class="col-7"><img src="static/public/{{ user[0].picture }}" class="profile-pic" /></div>
+                    </div>
+                    <div class="row settings">
+                        <div class="col-5"></div>
+                        <div class="col-7">
+                            <input type="file" name="file">
+                        </div>
+                    </div>
+                    <div class="row settings">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-success" type="submit">Update profile</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col weather-heading text-left">
+        Weather:
+    </div>
+    <div class="col text-left">
+        {{ weather["weather"][0]["description"] }}
+    </div>
+</div>
+<div class="row">
+    <div class="col weather-heading text-left">
+        Temperature:
+    </div>
+    <div class="col text-left">
+        {{ weather["main"]["temp"] | round }}° C
+    </div>
+</div>
+<div class="row">
+    <div class="col weather-heading text-left">
+        Location:
+    </div>
+    <div class="col text-left">
+        {{ weather["name"] }}
+    </div>
+
+</div>

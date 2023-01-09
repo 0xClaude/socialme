@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block head %}
+Profile
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+        <div class="card profile-card">
+            <div class="card-header">
+                <strong>Profile</strong>
+            </div>
+            <div class="card-body">
+                <div class="container text-left">
+                    <div class="row align-items-start">
+                        <div class="col">
+                            {% if profile[0].username != "blank" %}
+                            <img src="/static/public/{{ profile[0].picture }}" class="profile-pic">
+                            {% else %}
+                            <img src="/static/public/empty.jpg" class="profile-pic">
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <div class="profile-item">
+                                {% if profile[0].username != "blank" %}
+                                <p><strong>{{ profile[0].username }}</strong></p>
+                                <p><a href="mailto:{{ profile[0].email }}">{{ profile[0].email }}</a></p>
+                                {% else %}
+                                <p>This user does not exist</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if session["user_id"] == profile[0].id %}
+        <hr />
+        <div class="card profile-card">
+            <div class="card-header">
+                <p>What's on your mind?</p>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/profile">
+                    <input type="hidden" name="input" value="post">
+                    <input type="text" name="text" class="form-control" placeholder="Write something ..."
+                        autocomplete="off">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% for post in feed %}
+        <div class="card profile-card">
+
+            <div class="card-body">
+                <div class="container text-left">
+
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="/static/public/{{ post.picture }}" class="post-img" />
+                        </div>
+                        <div class="col-10 post-name">
+                            <strong><a href="/profile?id={{post.author}}">{{ post.username }}</a></strong>
+                            <p class="timestamp">{{ post.timestamp | datetimeformat}}</p>
+
+                            {% if post.author == session["user_id"] %}
+                            <form method="post" action="/deletepost">
+                                <input type="hidden" name="from" value="profile" />
+                                <input type="hidden" name="id" value="{{post.author}}" />
+                                <input type="hidden" name="postid" value="{{ post.postid }}" />
+                                <div class="delete-profile">
+                                    <button class="btn btn-delete" type="submit">x</button>
+                                </div>
+                            </form>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row card-body">
+                        <div clsas="col-12">
+                            {{ post.text }}
+                        </div>
+                    </div>
+                    {% for item in comments %}
+
+
+                    {% if item.postid == post.postid %}
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-1">
+                            <img src="/static/public/{{ item.picture }}" class="comment-img" />
+                        </div>
+                        <div class="col-10">
+                            <strong>
+                                <a href="/profile?id={{ item.userid }}">
+                                    {{ item.username }}</a></strong>
+                            <p class="timestamp">{{ item.timestamp | datetimeformat }}</p>
+                        </div>
+                        {% if item.userid == session["user_id"] %}
+                        <div class="delete">
+                            <form method="post" action="/deletecomment">
+                                <input type="hidden" name="from" value="profile" />
+                                <input type="hidden" name="id" value="{{ item.userid }}" />
+                                <input type="hidden" name="commentid" value="{{ item.commentid }}" />
+                                <button class="btn-delete-comment" type="submit">x</button>
+                            </form>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    <div class="row comment-text">
+                        <div class="col-2"></div>
+                        <div class="col-10">
+                            {{ item.commenttext }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <form method="post" action="/comment">
+                        <input type="hidden" name="postid" value="{{ post.postid }}">
+                        <input type="hidden" name="from" value="{{ post.author }}">
+                        <input type="text" name="comment" class="form-control" placeholder="Write a comment ..."">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class=" col-4">&nbsp;
+                </div>
+                {% endblock %}
